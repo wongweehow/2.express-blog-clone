@@ -11,12 +11,16 @@ router
   });
 
 // Pagination variables:
-const pagination = 2;
+const blogsPerPage = 2;
 
 router
-  .route('/page/:page')
+  .route('/page/:pageLoaded')
   .get(async (req, res) => {
-    const moreBlogs = await Blogpost.find().sort({ _id: -1 }).limit(pagination).skip(parseInt(req.params.page) * pagination)
+    const moreBlogs = await Blogpost
+                              .find()
+                              .sort({ _id: -1 })
+                              .limit(blogsPerPage)
+                              .skip(parseInt(req.params.pageLoaded) * blogsPerPage)
     res.json({moreBlogs});
   })
 

@@ -1,9 +1,8 @@
 const blogpostContainer = document.getElementById('blogpost-container');
 
-const parser = new DOMParser();
-
 const totalPageCount = parseInt(blogpostContainer.dataset.pagecount);
-let pageCounter = 2;
+
+let pageLoaded = 1;
 
 window.addEventListener('scroll', async () => {
   const scrollHeight = document.documentElement.scrollHeight;
@@ -11,17 +10,14 @@ window.addEventListener('scroll', async () => {
   const clientHeight = document.documentElement.clientHeight;
 
   if (scrollTop + clientHeight === scrollHeight) {
-    if (pageCounter < totalPageCount) {
+    if (pageLoaded < totalPageCount) {
       try {
-        const blogs = await fetch(`/page/${pageCounter}`);
+        const blogs = await fetch(`/page/${pageLoaded}`);
+        pageLoaded++;
         const { moreBlogs } = await blogs.json();
         moreBlogs.forEach(blog => {
-          // console.log(blog)
           blogpostContainer.appendChild(populate(blog));
         })
-
-        // const addPages = parser.parseFromString(morePages, 'text/html');
-        // blogpostContainer.appendChild(blogpost.appendChild(addPages.body));
       } catch (error) {
         console.log(error.message);
       }
@@ -42,8 +38,10 @@ function populate(blog) {
 
   // blogpost content
   const htmlList = blog.sanitizedHtml.split('\n');
-  for (let i = 0; i < htmlList.length - 1; i++) {
-    blogpost.insertAdjacentHTML('beforeend', htmlList[i])
+  for (let i = 0; i < htmlList.length; i++) {
+    if (htmlList[i] != '') {
+      blogpost.insertAdjacentHTML('beforeend', htmlList[i])
+    }
   }
 
   // blogpost dateCreated
@@ -54,7 +52,7 @@ function populate(blog) {
 
   // share-links
   const links = document.createElement('div');
-  links.classList.add('share-lin');
+  links.classList.add('share-links');
   links.innerHTML = `
     <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
     <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
