@@ -54,10 +54,10 @@ function populate(blog) {
   const links = document.createElement('div');
   links.classList.add('share-links');
   links.innerHTML = `
-    <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-    <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
-    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-    <a href="#"><i class="fa-solid fa-link"></i></a>
+    <a target="_blank" data-href-facebook="https://www.facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
+    <a target="_blank" data-href-twitter="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
+    <a target="_blank" data-href-linkedin="https://www.reddit.com"><i class="fa-brands fa-linkedin"></i></a>
+    <a target="_blank" data-href-copylink="https://www.youtube.com"><i class="fa-solid fa-link"></i></a>
   `;
   blogpost.appendChild(links);
   

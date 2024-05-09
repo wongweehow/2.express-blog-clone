@@ -1,52 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/8059a7ba77.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="styles.css">
-  <title>Daniel's Blog</title>
-</head>
+<%- include('partials/head') %>
 <body>
-  
-  <nav>
-    <header>
-      <div class="header-deco">
-        <div class="header-deco-1"></div>
-        <div class="header-deco-2"></div>
-      </div>
-      <div class="header-nav">
-        <a href="#">daniel's blog</a>
-        <button id="drop-down">
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
-        </button>
-      </div>
-    </header>
-    <div class="nav-body">
-      <form id="search-form">
-        <label for="query">Search:</label>
-        <div class="form-cluster">
-          <input type="text" id="query" name="query">
-          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-      </form>
-      <form id="subscribe-form">
-        <label for="email">Subscribe to weekly news letter:</label>
-        <div class="form-cluster">
-          <input type="text" id="email" name="email">
-          <button type="submit">Subscribe</button>
-        </div>
-      </form>
-      <p id="disclaimer">
-        <q>Disclaimer: this author has no social media accounts</q>
-      </p>
-    </div>
-  </nav>
+
+  <!-- For FaceBook share link -->
+  <!-- <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0" nonce="25j8pbky"></script> -->
+  <!--  -->
+
+  <%- include('partials/nav') %>
 
   <div class="container">
 
@@ -59,10 +21,22 @@
           <h6><%= blog.dateCreated %></h6>
           
           <div class="share-links">
-            <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-            <a href="#"><i class="fa-brands fa-square-x-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-solid fa-link"></i></a>
+            <!-- <div data-href="https://www.youtube.com" data-layout="" data-size="">
+              <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                <i class="fa-brands fa-square-facebook"></i>
+              </a>
+            </div>
+            <a href="https://twitter.com/intent/tweet?text=https://www.youtube.com/" target="_blank">
+              <i class="fa-brands fa-square-x-twitter"></i>
+            </a>
+            <a href="#"><i class="fa-solid fa-link"></i></a> -->
+
+            <a target="_blank" data-href-facebook="https://www.facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
+            <a target="_blank" data-href-twitter="https://www.twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
+            <a target="_blank" data-href-linkedin="https://www.reddit.com"><i class="fa-brands fa-linkedin"></i></a>
+            <a target="_blank" data-href-copylink="https://www.youtube.com"><i class="fa-solid fa-link"></i></a>
+
+
           </div>
         </div>
       <% }) %>
@@ -73,6 +47,7 @@
   
   <script src="scripts/dropdown.js"></script>
   <script src="scripts/pagination.js"></script>
+  <script src="scripts/share.js"></script>
 
 </body>
 </html>

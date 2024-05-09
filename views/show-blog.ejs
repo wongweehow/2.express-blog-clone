@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/head') %>
+<body>
+  
+  <%- include('partials/nav') %>
+
+  <div class="container">
+
+    <div id="blogpost-container">
+
+      <div class="blogpost">
+        <h1><%= blog.title %></h1>
+        <%- blog.sanitizedHtml %>
+        <h6><%= blog.dateCreated %></h6>
+      </div>
+
+    </div>
+
+  </div>
+  
+  <script src="scripts/dropdown.js"></script>
+
+</body>
+</html>
